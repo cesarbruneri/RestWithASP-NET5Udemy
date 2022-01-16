@@ -30,7 +30,7 @@ namespace RestWithASPNETUdemy
         {
 
             services.AddControllers();
-            services.AddScoped<ICalculatorSerevice, CalculatorSerevice>();
+            services.AddScoped<IPersonSerevice, CalculatorSerevice>();
             services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "RestWithASPNETUdemy", Version = "v1" });

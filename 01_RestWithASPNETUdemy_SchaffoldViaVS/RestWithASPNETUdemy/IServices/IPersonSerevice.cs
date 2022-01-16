@@ -1,6 +1,6 @@
 ﻿namespace RestWithASPNETUdemy.IServices
 {
-    public interface ICalculatorSerevice
+    public interface IPersonSerevice
     {
         decimal ConvertToDecimal(string strNumber);
 

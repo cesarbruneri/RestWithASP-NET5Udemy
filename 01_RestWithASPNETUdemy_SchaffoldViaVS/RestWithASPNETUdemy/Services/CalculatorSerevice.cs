@@ -2,7 +2,7 @@
 
 namespace RestWithASPNETUdemy.Services
 {
-    public class CalculatorSerevice : ICalculatorSerevice
+    public class CalculatorSerevice : IPersonSerevice
     {
         public decimal ConvertToDecimal(string strNumber)
         {
