@@ -2,12 +2,14 @@ using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using Microsoft.OpenApi.Models;
 using RestWithASPNETUdemy.IServices;
+using RestWithASPNETUdemy.Model.Context;
 using RestWithASPNETUdemy.Services;
 using System;
 using System.Collections.Generic;
@@ -30,7 +32,15 @@ namespace RestWithASPNETUdemy
         {
 
             services.AddControllers();
-            services.AddScoped<IPersonSerevice, CalculatorSerevice>();
+
+            services.AddDbContext<SqlContext>(options =>
+            options.UseSqlServer(Configuration.GetConnectionString("SqlConnectionString")));
+
+            //Versioning
+            services.AddApiVersioning();
+
+            //DependencyInjection
+            services.AddScoped<IPersonSerevice, PersonService>();
             services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "RestWithASPNETUdemy", Version = "v1" });
